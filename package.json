@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet-vectorgrid",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Leaflet.VectorGrid plugin for the vue2-leaflet package",
   "main": "./Vue2LeafletVectorGridProtobuf.vue",
   "scripts": {
@@ -20,7 +20,7 @@
     "vectorgrid"
   ],
   "author": "Daniel Wiesmann",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/tesselo/vue2-leaflet-vectorgrid/issues"
   },
