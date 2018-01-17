@@ -1,3 +1,9 @@
+/**
+ * Vector styling for the public ESRI Vector tiles endpoint.
+ * This style is copied from the Leaflet.VectorGrid library example here:
+ * https://github.com/Leaflet/Leaflet.VectorGrid/blob/master/docs/demo-vectortiles.html
+ */
+
 var vectorTileStyling = {
 
 	water: {
