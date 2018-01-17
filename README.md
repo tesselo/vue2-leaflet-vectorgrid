@@ -1,11 +1,41 @@
 # vue2-leaflet-vectorgrid
 
-This is a [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin extension for the [vue2-leaflet](https://github.com/KoRiGaN/Vue2Leaflet) package. Currently only the VectorGrid.protobuf is implemented.
+This is a [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin extension for the [vue2-leaflet](https://github.com/KoRiGaN/Vue2Leaflet) package. Currently only the VectorGrid.protobuf layer is implemented.
 
 ## Install
 
-    npm install --save vue2-leaflet-vectorgrid
+    npm install https://github.com/tesselo/vue2-leaflet-vectorgrid.git
 
+## Quickstart
+
+For a complete example, have a look at the demo code in the single-file component [example](example/example.vue).
+
+### On &lt;template&gt; add something like this
+
+```html
+<v-map :zoom=10 :center="[-34.9205, -57.953646]">
+  <v-protobuf url="https://example.com/my/favorite/endpoint/{z}/{y}/{x}.pbf" :options="options"></v-protobuf>
+</v-map>
+```
+
+### on &lt;script&gt; add
+
+```javascript
+export default {
+  components: {
+    'v-map': Vue2Leaflet.Map,
+    'v-protobuf': Vue2LeafletVectorGridProtobuf
+  },
+  data () {
+    return {
+      options: {
+      	vectorTileLayerStyles: { ... },
+         ...  // More VectorGrid options.
+      }
+    }
+  }
+  }
+```
 ## Demo
 
     git clone git@github.com:tesselo/vue2-leaflet-vectorgrid.git
@@ -16,30 +46,11 @@ This is a [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin ext
 
 Then you should be able to navigate with your browser and see the demo in http://localhost:4000/
 
-You can see the demo code in the file [example.vue](example.vue)
-
-## Usage
-
-### on &lt;template&gt; add
-
-something like this
-
-    <v-map :zoom=10 :center="[-34.9205, -57.953646]">
-      <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-      <v-vectorgrid url=""></v-vectorgrid>
-    </v-map>
-
-### on &lt;script&gt; add
-
 ## Develop and build
 
     npm install
     npm run build
 
-## Author
+## Acknowledgements
 
-Daniel Wiesmann
-
-## License
-
-MIT
+Thanks to Aaron Gong and  Julián Perelli, the authors of the [markercluster plugin](https://github.com/Leaflet/Leaflet.markercluster) and the [tracksymbol plugin](https://github.com/ais-one/vue2-leaflet-tracksymbol). Both packages have been used as a basis to build this plugin.
