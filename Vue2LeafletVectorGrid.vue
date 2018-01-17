@@ -8,35 +8,56 @@ import propsBinder from 'vue2-leaflet'
 
 const events = [];
 
-const VectorStyle = {
-        fill: false,
-        weight: 5,
-        fillColor: '#3333FF',
-        color: '#BB2222',
-        fillOpacity: 0.3,
-        opacity: 0.8
-};
-
-const style = {
-  'bla': VectorStyle
-}
-
 const props = {
-  url: String,
+  url: {
+    type: String,
+    required: true
+  },
   options: {
     type: Object,
     default: function () {
       return {}
     }
   },
-  fetchOptions: {credentials: 'same-origin'},
-  getFeatureId: function(f) {
-    console.log('Getting feature id', f);
-    return f.properties.id;
+  fetchOptions: {
+    type: Object,
+    default: function() {
+      credentials: 'same-origin'
+    }
   },
-  interactive: true,
-  vectorTileLayerStyles: style,
-  zIndex: 9999,
+  getFeatureId: {
+    type: Function,
+    default: function(f) {
+      return f.properties.id;
+    }
+  },
+  interactive: {
+    type: Boolean,
+    default: true
+  },
+  vectorTileLayerStyles: {
+    type: Object,
+    default: function () {
+      var VectorStyle = {
+        fill: false,
+        weight: 5,
+        fillColor: '#3333FF',
+        color: '#BB2222',
+        fillOpacity: 0.3,
+        opacity: 0.8
+      };
+
+      var style = {
+        'test': VectorStyle
+      }
+
+      return style
+    }
+  },
+  zIndex: {
+    type: Number,
+    default: 9999
+  }
 }
 
 export default {
@@ -45,6 +66,7 @@ export default {
 
   mounted () {
     const options = this.options;
+
     const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
     for (var i = 0; i < otherPropertytoInitialize.length; i++) {
       const propName = otherPropertytoInitialize[i];
@@ -53,15 +75,7 @@ export default {
       }
     }
 
-    this.mapObject = L.vectorGrid.protobuf(this.url, {
-      fetchOptions: {credentials: 'same-origin'},
-      getFeatureId: function(f) {
-        return f.properties.id;
-      },
-      interactive: true,
-      vectorTileLayerStyles: style,
-      zIndex: 9999,
-    });
+    this.mapObject = L.vectorGrid.protobuf(this.url, options)
 
     console.log('url', this.url, this.mapObject)
 

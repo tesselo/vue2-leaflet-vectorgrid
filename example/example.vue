@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <v-map :zoom=5 :center="[38.92, -7.95]">
-      <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-      <v-vectorgrid url="http://localhost/api/vtiles/35/{z}/{x}/{y}.pbf"></v-vectorgrid>
+    <v-map :zoom="initialZoom" :center="initialLocation">
+      <v-vectorgrid :url="tilesUrl" :options="opts"></v-vectorgrid>
     </v-map>
   </div>
 </template>
@@ -11,6 +10,19 @@
 import L from 'leaflet'
 import Vue2Leaflet from 'vue2-leaflet'
 import Vue2LeafletVectorGrid from '../Vue2LeafletVectorGrid'
+import vectorStyle from './style'
+
+const vectorTileOptions = {
+	rendererFactory: L.canvas.tile,
+	attribution: '© ESRI',
+	vectorTileLayerStyles: vectorStyle,
+  fetchOptions: {credentials: 'same-origin'},
+  getFeatureId: function(f) {
+    return f.properties.id;
+  },
+  interactive: true,
+  zIndex: 9999
+};
 
 export default {
   components: {
@@ -20,7 +32,10 @@ export default {
   },
   data () {
     return {
-      initialLocation: L.latLng(-34.9205, -57.953646)
+      initialLocation: L.latLng(0, 0),
+      initialZoom: 2,
+      opts: vectorTileOptions,
+      tilesUrl: "https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer/tile/{z}/{y}/{x}.pbf"
     }
   }
 }
@@ -28,7 +43,11 @@ export default {
 
 <style>
   @import "~leaflet/dist/leaflet.css";
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
   #app {
-    height: 500px;
+    height: 100%;
   }
 </style>
