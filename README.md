@@ -4,7 +4,7 @@ This is a [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin ext
 
 ## Install
 
-    npm install https://github.com/tesselo/vue2-leaflet-vectorgrid.git
+    npm install vue2-leaflet-vectorgrid
 
 ## Quickstart
 
