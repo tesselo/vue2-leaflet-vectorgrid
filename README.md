@@ -21,6 +21,9 @@ For a complete example, have a look at the demo code in the single-file componen
 ### on &lt;script&gt; add
 
 ```javascript
+import Vue2Leaflet from 'vue2-leaflet'
+import Vue2LeafletVectorGridProtobuf from 'vue2-leaflet-vectorgrid'
+
 export default {
   components: {
     'v-map': Vue2Leaflet.Map,
