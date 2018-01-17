@@ -1,3 +1,3 @@
 module.exports = (options, req) => ({
-  entry: './Vue2LeafletVectorGrid.vue'
+  entry: './Vue2LeafletVectorGridProtobuf.vue'
 })

@@ -1,14 +1,14 @@
 {
   "name": "vue2-leaflet-vectorgrid",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "description": "VectorGrid plugin extension for vue2-leaflet package",
-  "main": "./Vue2LeafletVectorGrid.vue",
+  "main": "./Vue2LeafletVectorGridProtobuf.vue",
   "scripts": {
     "build": "poi build --library",
     "example": "poi example/index.js"
   },
   "poi": {
-    "entry": "./Vue2LeafletVectorGrid.vue"
+    "entry": "./Vue2LeafletVectorGridProtobuf.vue"
   },
   "repository": {
     "type": "git",
