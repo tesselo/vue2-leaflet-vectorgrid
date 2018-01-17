@@ -65,19 +65,8 @@ export default {
   props: props,
 
   mounted () {
-    const options = this.options;
 
-    const otherPropertytoInitialize = [ "attribution", "token", "detectRetina", "opacity", "zIndex" ];
-    for (var i = 0; i < otherPropertytoInitialize.length; i++) {
-      const propName = otherPropertytoInitialize[i];
-      if(this[propName]) {
-        options[propName] = this[propName];
-      }
-    }
-
-    this.mapObject = L.vectorGrid.protobuf(this.url, options)
-
-    console.log('url', this.url, this.mapObject)
+    this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
 
     // eventsBinder(this, this.mapObject, events);
     // propsBinder(this, this.mapObject, props);

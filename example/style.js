@@ -5,7 +5,6 @@
  */
 
 var vectorTileStyling = {
-
 	water: {
 		fill: true,
 		weight: 1,

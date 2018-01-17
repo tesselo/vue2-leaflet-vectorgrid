@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-map :zoom="initialZoom" :center="initialLocation">
-      <v-vectorgrid :url="tilesUrl" :options="opts"></v-vectorgrid>
+      <v-protobuf :url="tilesUrl" :options="opts"></v-protobuf>
     </v-map>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import L from 'leaflet'
 import Vue2Leaflet from 'vue2-leaflet'
-import Vue2LeafletVectorGrid from '../Vue2LeafletVectorGrid'
+import Vue2LeafletVectorGridProtobuf from '../Vue2LeafletVectorGridProtobuf'
 import vectorStyle from './style'
 
 const vectorTileOptions = {
@@ -27,8 +27,7 @@ const vectorTileOptions = {
 export default {
   components: {
     'v-map': Vue2Leaflet.Map,
-    'v-tilelayer': Vue2Leaflet.TileLayer,
-    'v-vectorgrid': Vue2LeafletVectorGrid
+    'v-protobuf': Vue2LeafletVectorGridProtobuf
   },
   data () {
     return {
