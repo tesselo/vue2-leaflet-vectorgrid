@@ -68,6 +68,10 @@ export default {
 
     this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
 
+    if (this.$parent._isMounted)  {
+      this.deferredMountedTo(this.$parent.mapObject);
+    }
+
     // eventsBinder(this, this.mapObject, events);
     // propsBinder(this, this.mapObject, props);
   },
