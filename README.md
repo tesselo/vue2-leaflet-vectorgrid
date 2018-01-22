@@ -56,4 +56,4 @@ Then you should be able to navigate with your browser and see the demo in http:/
 
 ## Acknowledgements
 
-Thanks to Aaron Gong and  Julián Perelli, the authors of the [markercluster plugin](https://github.com/Leaflet/Leaflet.markercluster) and the [tracksymbol plugin](https://github.com/ais-one/vue2-leaflet-tracksymbol). Both packages have been used as a basis to build this plugin.
+Thanks to Aaron Gong and  Julián Perelli, the authors of the [markercluster plugin](https://github.com/jperelli/vue2-leaflet-markercluster) and the [tracksymbol plugin](https://github.com/ais-one/vue2-leaflet-tracksymbol). Both packages have been used as a basis to build this plugin.
