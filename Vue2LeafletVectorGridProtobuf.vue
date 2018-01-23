@@ -18,45 +18,6 @@ const props = {
     default: function () {
       return {}
     }
-  },
-  fetchOptions: {
-    type: Object,
-    default: function() {
-      credentials: 'same-origin'
-    }
-  },
-  getFeatureId: {
-    type: Function,
-    default: function(f) {
-      return f.properties.id;
-    }
-  },
-  interactive: {
-    type: Boolean,
-    default: true
-  },
-  vectorTileLayerStyles: {
-    type: Object,
-    default: function () {
-      var VectorStyle = {
-        fill: false,
-        weight: 5,
-        fillColor: '#3333FF',
-        color: '#BB2222',
-        fillOpacity: 0.3,
-        opacity: 0.8
-      };
-
-      var style = {
-        'test': VectorStyle
-      }
-
-      return style
-    }
-  },
-  zIndex: {
-    type: Number,
-    default: 9999
   }
 }
 
