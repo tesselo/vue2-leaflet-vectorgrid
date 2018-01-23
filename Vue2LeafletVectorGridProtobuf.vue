@@ -3,79 +3,38 @@
 <script>
 import L from 'leaflet'
 import 'leaflet.vectorgrid'
-import eventsBinder from 'vue2-leaflet'
-import propsBinder from 'vue2-leaflet'
-
-const events = [];
-
-const props = {
-  url: {
-    type: String,
-    required: true
-  },
-  options: {
-    type: Object,
-    default: function () {
-      return {}
-    }
-  },
-  fetchOptions: {
-    type: Object,
-    default: function() {
-      credentials: 'same-origin'
-    }
-  },
-  getFeatureId: {
-    type: Function,
-    default: function(f) {
-      return f.properties.id;
-    }
-  },
-  interactive: {
-    type: Boolean,
-    default: true
-  },
-  vectorTileLayerStyles: {
-    type: Object,
-    default: function () {
-      var VectorStyle = {
-        fill: false,
-        weight: 5,
-        fillColor: '#3333FF',
-        color: '#BB2222',
-        fillOpacity: 0.3,
-        opacity: 0.8
-      };
-
-      var style = {
-        'test': VectorStyle
-      }
-
-      return style
-    }
-  },
-  zIndex: {
-    type: Number,
-    default: 9999
-  }
-}
 
 export default {
-
-  props: props,
-
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
+    options: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    }
+  },
+  watch: {
+    url() {
+      this.updateLayer()
+    },
+    options() {
+      this.updateLayer()
+    },
+  },
   mounted () {
-
     this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
 
     if (this.$parent._isMounted)  {
       this.deferredMountedTo(this.$parent.mapObject);
     }
-
-    // eventsBinder(this, this.mapObject, events);
-    // propsBinder(this, this.mapObject, props);
   },
-
+  beforeDestroy() {
+    this.removeLayer()
+  },
   methods: {
     deferredMountedTo(parent) {
       this.mapObject.addTo(parent);
@@ -95,11 +54,15 @@ export default {
 
     setToken(val) {
       this.options.token = val;
+    },
+    removeLayer() {
+      this.$parent.mapObject.removeLayer(this.mapObject);
+    },
+    updateLayer() {
+      this.removeLayer()
+      this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
+      this.deferredMountedTo(this.$parent.mapObject);
     }
-  },
-
-  beforeDestroy() {
-    this.$parent.mapObject.removeLayer(this.mapObject);
   }
 }
 </script>
