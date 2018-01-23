@@ -13,16 +13,9 @@ import Vue2LeafletVectorGridProtobuf from '../Vue2LeafletVectorGridProtobuf'
 import vectorStyle from './style'
 
 const vectorTileOptions = {
-	rendererFactory: L.canvas.tile,
 	attribution: '© ESRI',
 	vectorTileLayerStyles: vectorStyle,
-  fetchOptions: {credentials: 'same-origin'},
-  getFeatureId: function(f) {
-    return f.properties.id;
-  },
-  interactive: true,
-  zIndex: 9999
-};
+}
 
 export default {
   components: {
