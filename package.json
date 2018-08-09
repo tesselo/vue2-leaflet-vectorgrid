@@ -1,6 +1,6 @@
 {
   "name": "vue2-leaflet-vectorgrid",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Leaflet.VectorGrid plugin for the vue2-leaflet package",
   "main": "./Vue2LeafletVectorGridProtobuf.vue",
   "scripts": {
