@@ -41,7 +41,9 @@ export default {
   },
   mounted () {
     this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
-
+    if (this.options && this.options.interactive) {
+      L.DomEvent.on(this.mapObject, this.$listeners)
+    }
     if (this.$parent._isMounted)  {
       this.deferredMountedTo(this.$parent.mapObject);
     }
@@ -75,6 +77,9 @@ export default {
     updateLayer() {
       this.removeLayer()
       this.mapObject = L.vectorGrid.protobuf(this.url, this.options)
+      if (this.options && this.options.interactive) {
+        L.DomEvent.on(this.mapObject, this.$listeners)
+      }
       this.deferredMountedTo(this.$parent.mapObject);
     }
   }
