@@ -1,15 +1,19 @@
 <template>
-  <div id="app">
-    <v-map :zoom="initialZoom" :center="initialLocation">
-      <v-protobuf :url="tilesUrl" :options="opts"></v-protobuf>
-    </v-map>
+  <div class="example">
+  <l-map
+    :zoom="initialZoom"
+    :center="initialLocation">
+    <l-protobuf
+      :url="tilesUrl"
+      :options="opts"/>
+  </l-map>
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
-import Vue2Leaflet from 'vue2-leaflet'
-import Vue2LeafletVectorGridProtobuf from '../Vue2LeafletVectorGridProtobuf'
+import { LMap } from 'vue2-leaflet'
+import LProtobuf from '../Vue2LeafletVectorGridProtobuf'
 import vectorStyle from './style'
 
 const vectorTileOptions = {
@@ -19,8 +23,8 @@ const vectorTileOptions = {
 
 export default {
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-protobuf': Vue2LeafletVectorGridProtobuf
+    LMap,
+    LProtobuf
   },
   data () {
     return {
@@ -31,15 +35,17 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
-  @import "~leaflet/dist/leaflet.css";
+  @import "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css";
   html, body {
     margin: 0;
     height: 100%;
   }
-  #app {
+  .example {
     height: 100%;
+    width: 100%;
   }
 </style>

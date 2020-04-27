@@ -8,26 +8,26 @@ This is a [VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) plugin ext
 
 ## Quickstart
 
-For a complete example, have a look at the demo code in the single-file component [example](example/example.vue).
+For a complete example, have a look at the demo code in the single-file component [example](example/app.vue).
 
 ### On &lt;template&gt; add something like this
 
 ```html
-<v-map :zoom=10 :center="[-34.9205, -57.953646]">
-  <v-protobuf url="https://example.com/my/favorite/endpoint/{z}/{y}/{x}.pbf" :options="options"></v-protobuf>
-</v-map>
+<l-map :zoom=10 :center="[-34.9205, -57.953646]">
+  <l-protobuf url="https://example.com/my/favorite/endpoint/{z}/{y}/{x}.pbf" :options="options"/>
+</l-map>
 ```
 
 ### on &lt;script&gt; add
 
 ```javascript
-import Vue2Leaflet from 'vue2-leaflet'
-import Vue2LeafletVectorGridProtobuf from 'vue2-leaflet-vectorgrid'
+import { LMap } from 'vue2-leaflet';
+import LProtobuf from 'vue2-leaflet-vectorgrid'
 
 export default {
   components: {
-    'v-map': Vue2Leaflet.Map,
-    'v-protobuf': Vue2LeafletVectorGridProtobuf
+    LMap,
+    LProtobuf
   },
   data () {
     return {
@@ -39,15 +39,29 @@ export default {
   }
 }
 ```
-## Demo
+## Example
+There is a simple but complete usage example. First, clone the repo and install
+its dependencies.
 
     git clone git@github.com:tesselo/vue2-leaflet-vectorgrid.git
     cd vue2-leaflet-vectorgrid
-
     npm install
-    npm run example
 
-Then you should be able to navigate with your browser and see the demo in http://localhost:4000/
+Also install peer dependencies.
+
+    npm install vue leaflet vue2-leaflet
+
+To run the example `@vue/cli` and `@vue/cli-service-global` are required to be
+installed globally.
+
+       npm install -g @vue/cli @vue/cli-service-global
+
+Start the dev server using the the vue serve utility
+
+    vue serve example/app.vue
+
+Then you should be able to navigate with your browser and see the demo at
+http://localhost:8080/.
 
 ## Develop and build
 
