@@ -68,6 +68,16 @@ http://localhost:8080/.
     npm install
     npm run build
 
+## Deploy
+
+Pack locally for install testing.
+
+    npm pack
+
+Publish release
+
+    npm publish
+
 ## Acknowledgements
 
 Thanks to Aaron Gong and  Julián Perelli, the authors of the [markercluster plugin](https://github.com/jperelli/vue2-leaflet-markercluster) and the [tracksymbol plugin](https://github.com/ais-one/vue2-leaflet-tracksymbol). Both packages have been used as a basis to build this plugin.

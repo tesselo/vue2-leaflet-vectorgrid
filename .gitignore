@@ -1,5 +1,6 @@
 # Dist
 dist
+*.tgz
 
 # Logs
 logs
